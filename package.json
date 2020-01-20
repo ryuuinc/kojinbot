@@ -1,0 +1,53 @@
+{
+  "name": "telegram-bot",
+  "version": "0.1.0",
+  "author": "Taisetsuz",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "test:cover": "jest --coverage",
+    "dev": "ts-node ./src/index.ts",
+    "dev:watch": "ts-node-dev --respawn src/index.ts",
+    "lint": "eslint .",
+    "clean": "rimraf build",
+    "build": "run-s clean typecheck",
+    "release": "standard-version"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "koa": "^2.11.0",
+    "telegraf": "^3.35.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.9.0",
+    "@types/koa": "^2.11.0",
+    "@types/node": "^13.1.7",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
+    "eslint": "^6.8.0",
+    "eslint-config-alloy": "^3.5.0",
+    "eslint-plugin-jest": "^23.6.0",
+    "husky": "^4.0.10",
+    "jest": "^24.9.0",
+    "lint-staged": "^10.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "socks-proxy-agent": "^4.0.2",
+    "standard-version": "^7.0.1",
+    "ts-jest": "^24.3.0",
+    "ts-node": "^8.6.2",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.7.4"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
