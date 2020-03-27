@@ -19,28 +19,28 @@
     "dotenv": "^8.2.0",
     "https-proxy-agent": "^4.0.0",
     "koa": "^2.11.0",
-    "telegraf": "^3.35.0"
+    "telegraf": "^3.36.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.9.0",
-    "@types/koa": "^2.11.0",
-    "@types/node": "^13.1.7",
-    "@typescript-eslint/eslint-plugin": "^2.16.0",
-    "@typescript-eslint/parser": "^2.16.0",
+    "@types/jest": "^24.9.1",
+    "@types/koa": "^2.11.2",
+    "@types/node": "^13.9.4",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
     "eslint": "^6.8.0",
-    "eslint-config-alloy": "^3.5.0",
-    "eslint-plugin-jest": "^23.6.0",
-    "husky": "^4.0.10",
-    "jest": "^24.9.0",
-    "lint-staged": "^10.0.0",
+    "eslint-config-alloy": "^3.6.0",
+    "eslint-plugin-jest": "^23.8.2",
+    "husky": "^4.2.3",
+    "jest": "^25.2.3",
+    "lint-staged": "^10.0.9",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
-    "rimraf": "^3.0.0",
-    "standard-version": "^7.0.1",
+    "rimraf": "^3.0.2",
+    "standard-version": "^7.1.0",
     "ts-jest": "^24.3.0",
-    "ts-node": "^8.6.2",
+    "ts-node": "^8.8.1",
     "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.7.4"
+    "typescript": "^3.8.3"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix"
