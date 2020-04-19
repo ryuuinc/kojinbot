@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import axios from 'axios';
 import Telegraf from 'telegraf';
+import Koa from 'koa';
+import koaBody from 'koa-body';
 
 // initial env
 dotenv.config();
@@ -16,11 +18,6 @@ const instance = axios.create(axiosOption);
 const bot = new Telegraf(BOT_TOKEN, {
   telegram: botOption
 });
-
-// how to run telegram
-if (BOT_ENV === 'production') {
-  bot.telegram.setWebhook(API_URL + '/kojinbot');
-}
 
 // start tip
 const startTip = `
@@ -43,4 +40,21 @@ bot.command('build', async (ctx) => {
   }
 });
 
-bot.launch();
+// how to run telegram
+if (BOT_ENV === 'production') {
+  bot.telegram.setWebhook(API_URL + '/kojinbot');
+  // koa
+  const app = new Koa();
+  app.use(koaBody());
+  app.use(async (ctx, next) => {
+    if (ctx.method !== 'POST') {
+      return next();
+    }
+    await bot.handleUpdate(ctx.request.body, ctx.response.body);
+    ctx.status = 200;
+  });
+  app.listen(50000);
+} else {
+  bot.telegram.deleteWebhook();
+  bot.launch();
+}

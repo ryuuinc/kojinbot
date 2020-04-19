@@ -4,8 +4,7 @@ WORKDIR /kojinbot
 
 COPY package*.json ./
 
-RUN npm ci --production \
-  && npm i typescript --global
+RUN npm ci
 
 COPY . .
 
