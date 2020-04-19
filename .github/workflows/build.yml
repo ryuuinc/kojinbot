@@ -4,9 +4,29 @@ on: [push]
 
 jobs:
   build:
+    env:
+      IP: ${{ secrets.IP }}
+      KEY: ${{ secrets.KEY }}
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Initial CI
+      - name: Configuration environment
         run: |
-          echo 'Hello~'
+          mkdir -p ~/.ssh/
+          echo "$KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -t ed25519 -p 56789 $IP >> ~/.ssh/known_hosts
+      - name: Docker login
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - name: Docker build
+        run: |
+          docker build -t $DOCKER_USERNAME/kojinbot .
+      - name: Docker publish
+        run: |
+          docker push $DOCKER_USERNAME/kojinbot
+      - name: SSH stuff
+        run: |
+          ssh root@$IP -p 56789 "docker pull $DOCKER_USERNAME/kojinbot"
