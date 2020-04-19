@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES2018",
-    "rootDir": "src/",
-    "outDir": "dist/",
+    "rootDir": "lib/",
+    "outDir": "build/",
     "moduleResolution": "node",
     "module": "commonjs",
     "declaration": true,
@@ -22,7 +22,7 @@
     "lib": ["ES2018"],
     "typeRoots": ["node_modules/@types"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["lib/**/*.ts"],
   "exclude": ["node_modules", "test"],
   "compileOnSave": false
 }
