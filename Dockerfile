@@ -5,11 +5,10 @@ WORKDIR /kojinbot
 COPY package*.json ./
 
 RUN npm ci --production \
-  && npm i typescript --global \
-  && tsc -p tsconfig.json
+  && npm i typescript --global
 
 COPY . .
 
 EXPOSE 50000
 
-CMD npm run start
+CMD npm run build && npm run start
