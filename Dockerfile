@@ -4,10 +4,11 @@ WORKDIR /kojinbot
 
 COPY package*.json ./
 
-RUN npm ci --production \
-  && npm run build
+RUN npm ci --production
 
 COPY . .
+
+RUN npm run build
 
 EXPOSE 50000
 
