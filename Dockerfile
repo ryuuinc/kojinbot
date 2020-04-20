@@ -4,7 +4,7 @@ WORKDIR /kojinbot
 
 COPY package*.json ./
 
-RUN npm ci \
+RUN npm ci --production \
   && npm run build
 
 COPY . .
