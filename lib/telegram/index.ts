@@ -20,14 +20,13 @@ bot.start((ctx) =>
   ctx.reply(`
 This bot will help you do some stuff. Simply send:
 
-/* Generar */
-/build generate Clash config(dev)
+/generar generate Clash config
 `)
 );
 
-/* Generar */
-bot.command('build', async (ctx) => {
-  const response = await instance.post(API_URL + '/generar/build');
+/* generar */
+bot.command('generar', async (ctx) => {
+  const response = await instance.post(API_URL + '/generar');
   if (response.data.isDone === true) {
     ctx.reply('Clash config has been generated.');
   } else {
