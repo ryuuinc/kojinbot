@@ -8,4 +8,4 @@
 
 ## 使用
 
-使用 `Swarm mode` 进行部署，需要提供 `API_URL`、`BOT_TOKEN` 二个环境变量来运行容器
+使用 `Swarm mode` 进行部署，需要提供 `API_URL`、`BOT_ENV`、`BOT_TOKEN` 三个环境变量来运行容器

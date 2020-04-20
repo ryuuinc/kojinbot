@@ -4,10 +4,11 @@ WORKDIR /kojinbot
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm ci \
+  && npm run build
 
 COPY . .
 
 EXPOSE 50000
 
-CMD npm run build && npm run start
+CMD ["npm", "start"]
