@@ -1,7 +1,6 @@
-import os from 'os';
 import { SocksProxyAgent } from 'socks-proxy-agent';
 
-const agent = new SocksProxyAgent('socks://127.0.0.1:7891');
+let agent: SocksProxyAgent;
 
 let botOption = {
   agent: null
@@ -15,10 +14,13 @@ let axiosOption = {
 };
 
 // identify current system platform
-if (os.platform() === 'win32') {
+if (process.env.SOCKS_PROXY_AGENT) {
+  agent = new SocksProxyAgent(process.env.SOCKS_PROXY_AGENT);
+
   botOption = {
     agent: agent as any
   };
+
   axiosOption = Object.assign(axiosOption, {
     proxy: false,
     httpsAgent: agent
