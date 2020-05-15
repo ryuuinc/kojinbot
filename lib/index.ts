@@ -1,12 +1,10 @@
 import dotenv from 'dotenv';
 import Koa from 'koa';
 import koaBody from 'koa-body';
-dotenv.config();
 
-// prepare
+dotenv.config();
 import bot from './telegram';
 
-// server or local
 if (process.env.BOT_ENV === 'production') {
   bot.telegram.setWebhook(process.env.API_URL + '/kojinbot');
 
