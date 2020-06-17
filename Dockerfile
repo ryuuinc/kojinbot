@@ -3,7 +3,7 @@ WORKDIR /builder
 COPY package*.json ./
 RUN npm ci
 COPY tsconfig*.json ./
-COPY lib lib
+COPY lib ./lib
 RUN npm run clean
 RUN npm run build
 
