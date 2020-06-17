@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2018",
     "rootDir": "lib/",
-    "outDir": "build/",
+    "outDir": "dist/",
     "moduleResolution": "node",
     "module": "commonjs",
     "declaration": true,
