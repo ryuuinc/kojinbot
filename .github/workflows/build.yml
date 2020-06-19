@@ -7,8 +7,7 @@ jobs:
     env:
       IP: ${{ secrets.IP }}
       KEY: ${{ secrets.KEY }}
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      PORT: ${{ secrets.PORT }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -17,16 +16,13 @@ jobs:
           mkdir -p ~/.ssh/
           echo "$KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -t ed25519 -p 56789 $IP >> ~/.ssh/known_hosts
-      - name: Docker login
-        run: |
-          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - name: Docker build
-        run: |
-          docker build -t $DOCKER_USERNAME/kojinbot .
-      - name: Docker publish
-        run: |
-          docker push $DOCKER_USERNAME/kojinbot
+          ssh-keyscan -t ed25519 -p $PORT $IP >> ~/.ssh/known_hosts
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ryuuinc/kojinbot
+          tags: latest
       - name: SSH stuff
         run: |
-          ssh root@$IP -p 56789 "docker pull $DOCKER_USERNAME/kojinbot"
+          ssh root@$IP -p $PORT "./docker_kojinbot.sh"
