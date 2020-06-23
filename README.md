@@ -1,6 +1,6 @@
 # kojinbot
 
-[![Build Status](https://github.com/ryuuinc/easybot/workflows/Build/badge.svg)](https://github.com/ryuuinc/easybot/actions)
+[![Build Status](https://github.com/ryuuinc/kojinbot/workflows/Docker/badge.svg)](https://github.com/ryuuinc/kojinbot/actions)
 
 ## 介绍
 
