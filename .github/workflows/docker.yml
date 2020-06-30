@@ -29,10 +29,10 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_TOKEN }}
           repository: ryuuinc/kojinbot
           tags: latest
 
       - name: Run shell script remotely
         run: |
-          ssh root@$IP -p $PORT "./docker_kojinbot.sh"
+          ssh root@$IP -p $PORT "./docker-kojinbot.sh"
