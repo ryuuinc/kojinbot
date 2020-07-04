@@ -17,7 +17,7 @@ if (process.env.BOT_ENV === 'production') {
     await bot.handleUpdate(ctx.request.body, ctx.response.body);
     ctx.status = 200;
   });
-  app.listen(50000);
+  app.listen(55000);
 } else {
   bot.launch();
 }
