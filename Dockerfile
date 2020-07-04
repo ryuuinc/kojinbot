@@ -21,6 +21,6 @@ RUN npm ci --production
 
 COPY --from=builder /builder/dist ./dist
 
-EXPOSE 50000
+EXPOSE 55000
 
 CMD ["npm", "start"]
