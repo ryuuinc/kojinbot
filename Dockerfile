@@ -11,6 +11,7 @@ RUN npm prune --production
 # copy from builder
 FROM node:12.18.2-alpine
 WORKDIR /kojinbot
+COPY --from=builder /app/package.json ./dist
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 EXPOSE 55000
