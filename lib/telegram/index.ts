@@ -1,8 +1,6 @@
-import axios from 'axios';
 import Telegraf from 'telegraf';
 
-import { botConfig, axiosConfig } from '../configs/agentConfig';
-const instance = axios.create(axiosConfig);
+import { botConfig } from '../configs/agentConfig';
 const bot = new Telegraf(process.env.BOT_TOKEN, {
   telegram: botConfig
 });
