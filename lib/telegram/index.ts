@@ -1,4 +1,4 @@
-import Telegraf from 'telegraf';
+import { Telegraf } from 'telegraf';
 
 import { botConfig } from '../configs/agentConfig';
 const bot = new Telegraf(process.env.BOT_TOKEN, {
